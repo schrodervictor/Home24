@@ -1,0 +1,23 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/category/form.phtml
+ *
+ * View file used to render category form.
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><br /><br />
+<div id="view-content">
+    <?php if($this->success): ?>
+    <?php     echo '<h3>Category ' . $this->categoryName . ' ' . $this->actionPerformed . '!</h3>'; ?>
+    <?php endif; ?>
+    <p>Add/edit Category:</p>
+<?php $this->form->setAction($this->url());
+      echo $this->form; ?>
+</div>

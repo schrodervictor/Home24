@@ -1,0 +1,42 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/category/index.phtml
+ *
+ * View file used to render category info page.
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><?php echo $this->placeholder('header'); ?>
+<br><br>
+<div id="view-content" style="text-align:center">
+    <h1 class="block-text">Welcome to category: <strong><?php echo $this->category['name']; ?></strong></h1>
+    <br><br>
+    <h3>Product list:</h3><br>
+    <ul>
+        <?php foreach ($this->products as $product): 
+            $url = $this->url(array('productId' => $product['id']), 'product');
+            $edit = $this->url(array(
+                'controller' => 'product',
+                'action' => 'edit',
+                'id' => $product['id'],
+                ), 'default'
+            );
+            $img = $product['image'];
+            $add = $this->url(array(
+                'controller' => 'cart',
+                'action' => 'add',
+                'id' => $product['id'],
+                ), 'default'
+            ); ?>
+            <li><a href="<?php echo $url; ?>"><?php echo $product['name']; ?></a>
+                <br>Price: <?php echo $product['price']; ?>
+                <br>(<a href="<?php echo $edit; ?>">edit</a> | <a href="<?php echo $add; ?>">Add to cart</a>)</li><br><br>
+        <?php endforeach; ?>
+    <?php echo $this->category['description']; ?>
+</div>

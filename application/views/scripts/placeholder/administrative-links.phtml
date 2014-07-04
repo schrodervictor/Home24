@@ -1,0 +1,30 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/placeholder/administrative-links.phtml
+ *
+ * Renders a simple list of Add product/category
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><?php $this->placeholder('administrative-links')->captureStart(); ?>
+<div>
+    <h2>Administrative Links:</h2>
+    <ul>
+        <li><a href="<?php echo $this->url(array(
+                'controller' => 'category',
+                'action'     => 'add',
+            )); ?>">Add Category</a></li>
+        <li><a href="<?php echo $this->url(array(
+                'controller' => 'product',
+                'action'     => 'add',
+            )); ?>">Add Product</a></li>
+
+    </ul>
+</div>
+<?php $this->placeholder('administrative-links')->captureEnd(); ?>

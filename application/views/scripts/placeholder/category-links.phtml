@@ -1,0 +1,33 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/placeholder/category-links.phtml
+ *
+ * Renders a simple list of category links
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><?php $this->placeholder('category-links')->captureStart(); ?>
+<div>
+    <h2>Category links:</h2>
+    <ul>
+    <?php foreach ($this->categories as $category) {
+        echo '<li class="category"><a href="'
+             . $this->url(array('categoryId' => $category['id']), 'category')
+             . '">' . $category['name'] .'</a>'
+             . '&nbsp;&nbsp(<a href="'
+             . $this->url(array(
+                    'controller' => 'category',
+                    'action'     => 'edit',
+                    'id'         => $category['id'],
+               ))
+             . '">edit</a>)</li>';
+    } ?>
+    </ul>
+</div>
+<?php $this->placeholder('category-links')->captureEnd(); ?>

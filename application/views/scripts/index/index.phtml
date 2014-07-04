@@ -1,43 +1,52 @@
-<style>
-    a:link,
-    a:visited
-    {
-        color: #0398CA;
-    }
-
-    span#zf-name
-    {
-        color: #91BE3F;
-    }
-
-    div#welcome
-    {
-        color: #FFFFFF;
-        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
-        width:  600px;
-        height: 400px;
-        border: 2px solid #444444;
-        overflow: hidden;
-        text-align: center;
-    }
-
-    div#more-information
-    {
-        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
-        height: 100%;
-    }
-</style>
-<div id="welcome">
-    <h1>Welcome to the <span id="zf-name">Zend Framework!</span></h1>
-
-    <h3>This is your project's main page</h3>
-
-    <div id="more-information">
-        <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
-        <p>
-            Helpful Links: <br />
-            <a href="http://framework.zend.com/">Zend Framework Website</a> |
-            <a href="http://framework.zend.com/manual/en/">Zend Framework Manual</a>
-        </p>
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/index/index.phtml
+ *
+ * View file for the content's main page.
+ *
+ * The structure was simply copied and simplyfied
+ * from the actual home24 website.
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><?php echo $this->placeholder('header'); ?>
+<div id="main-content">
+    <div class="cms-row1">
+        <div class="pageholder">
+            <section>
+                <style type="text/css" scoped="">
+                    .pageholder{width:960px}
+                    .tt{width:958px; height:370px; margin-bottom:14px }
+                    .panel-sub1-category{ width:228px; height:228px; float:right;  }
+                    .panel-sub2-category{ width:475px; height:228px; float:right;   margin-right:14px }
+                    .panel-sub3-category{ width:228px; height:228px; float:left; }
+                </style>
+                <!-- Teaser right -->
+                <div class="panel-sub1-category" style="width:228px; height:300px; float:right;">
+                    <br><br><br><br>
+                    <?php echo $this->placeholder('administrative-links'); ?>
+                </div> 
+                <!-- Teaser middle -->
+                <div class="panel-sub2-category" style="width:475px; height:300px; float:right; margin-right:14px; margin-left:14px;text-align:center">
+                    <br><br><br>
+                    <h1>Welcome to <strong>Home24!</strong></h1>
+                    <br>
+                    <h3>This is the main page</h3>
+                    <br>
+                    <?php echo $this->placeholder('category-links'); ?>
+                    <br>
+                    <br>
+               </div> 
+                <!-- Teaser left -->
+                <div class="panel-sub3-category" style="width:228px; height:300px; float:left;">
+                </div>
+            </section>
+        </div>
     </div>
 </div>

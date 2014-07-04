@@ -1,0 +1,124 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/placeholder/header.phtml
+ *
+ * View file used to render the header.
+ *
+ * The structure was simply copied and simplyfied
+ * from the actual home24 website.
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><?php
+$urlHome = $this->url(array());
+$urlShowCart = $this->url(array(
+    'controller' => 'cart',
+    'action'     => 'show'), 'default');
+
+$this->placeholder('header')->captureStart(); ?>
+<div class="header">
+    <header class="header-container">
+        <div class="header-top-line row ie7-table">
+                <div class="ie7-cell">
+                    <div class="right-of-return icon">
+                        30 Tage Rückgaberecht                    </div>
+                 </div>
+                <div class="truck-cont ie7-cell">
+                    <div class="truck-small icon">
+                        Kostenloser Versand &amp; Rückversand                    </div>
+                </div>
+
+                <div class="pull-right ie7-cell">
+                    <div class="icon percentage-small">Viele Produkte 40% reduziert</div>
+                </div>
+        </div>
+        <div class="header-background">
+        <div class="header-center-top-line row">
+
+            <div class="pull-right header-customer-options">
+                <a href="">Kundenservice</a> | <a href="#">Mein Kundenkonto</a> | <a id="link-login" href="#">Anmelden</a>            </div>
+
+                    </div>
+        <div class="header-center-line row">
+            <div class="col-2 header-logo-container">
+                <a itemprop="url" class="logo" href="<?php echo $urlHome; ?>">
+                    <img itemprop="image" src="http://cdnakm.home24.com/skin/reboot/7a1f10e/img/de_de/desktop/layout/header/moebel.png" alt="Home24 - Möbel online kaufen">                </a>
+            </div>
+            <div class="col-2 header-thanks">
+                <img src="http://cdnakm.home24.com/media/om/lp/SEM/1405_redesign/claim-header.gif" alt="Mehr als 500.000 Kunden. Wir sagen Danke!" height="34" width="133">            </div>
+            <div class="col-5 search-field-block">
+
+                <form data-formvalidatorid="header_search" class="search-field" method="get" action="http://www.home24.de/search">
+                    <input type="search" class="search-field-input" name="query" autocomplete="off" placeholder="Lieblingsprodukte suchen...">
+
+                    <div class="search-field-button">
+                        <span class="icon-lens icon"></span>
+                        <input class="search-field-submit" type="submit" value="Suchen">
+                    </div>
+                </form>
+
+                <div class="suggest"></div>
+            </div>
+            <div class="pull-right">
+                <div class="header-cart-menu pull-right">
+                    <a class="header-cart-link" href="<?php echo $urlShowCart; ?>">
+                        Warenkorb                    </a>
+                    <a class="header-cart-icon" href="<?php echo $urlShowCart; ?>">
+                        <div class="icon-cart-count icon"><div class="cart-articles">0</div></div>
+                    </a>
+                </div>
+                <div class="header-certificate-icons pull-right">
+                <a href="#" target="_blank"><span class="icon-trusted-shop icon"></span></a>                </div>
+            </div>
+            <div class="header-center-spacer row col-12"></div>
+        </div>
+        <nav class="navigation">
+    <div class="main-navigation-wrapper">
+        <ul class="main-navigation">
+                <li class="top first home">
+        <a href="<?php echo $urlHome; ?>" class=""><div class="icon home-icon"></div></a>
+            </li>
+        <?php foreach ($this->categories as $category):
+            $categoryUrl = $this->url(array('categoryId' => $category['id']), 'category');
+            $categoryEdit = $this->url(array(
+                'controller' => 'category',
+                'action'     => 'edit',
+                'id'         => $category['id'],
+            ), 'default');
+        ?>
+    <li class="top">
+        <a href="<?php echo $categoryUrl; ?>" class="link" style="padding: 0px 27px;"><?php echo $category['name']; ?></a><br><a href="<?php echo $categoryEdit; ?>">(edit)</a>
+            </li>
+        <?php endforeach; ?>
+    <li class="top">
+        <a href="#" class="link" style="padding: 0px 27px;">Marken</a>
+            </li>
+    <li class="top last">
+        <a href="#" class="link" style="padding-left: 31px; padding-right: 31px;">Sale</a>
+            </li>
+        </ul>
+        <div class="clear-both"></div>
+    </div>
+    <div id="main-sub-menu" style="left: 730px; display: none;">
+        <div class="arrow" style="left: 172.5px;"><div class="arrow-after"></div></div>
+        <div id="main-sub-menu-placeholder"></div>
+        <div id="main-sub-menu-2-mock" style="width: 0px; height: 0px; display: none; overflow: visible;">
+            <div class="loading-indicator" style="display: none;"></div>
+        </div>
+        <div id="main-sub-menu-2" class="show-one-column" style="display: none;"></div>
+        <div class="clear-both"></div>
+    </div>
+</nav>
+
+        </div>
+<!--/div-->
+<div class="clear-both"></div>
+</header>
+</div>
+<?php $this->placeholder('header')->captureEnd(); ?>

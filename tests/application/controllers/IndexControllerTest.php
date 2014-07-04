@@ -9,6 +9,17 @@ class IndexControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         parent::setUp();
     }
 
+    public function testHomepageForRouteModuleControllerAndAction() {
+    	$this->dispatch('/');
+    	$this->assertRoute('default');
+    	$this->assertModule('default');
+        $this->assertController('index');
+        $this->assertAction('index');
+    }
 
+    public function testHomepageContentShouldHaveCategories() {
+    	$this->dispatch('/');
+    	$this->assertQuery('li.category');
+    }
+    
 }
-

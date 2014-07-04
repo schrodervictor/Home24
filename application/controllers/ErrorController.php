@@ -1,5 +1,21 @@
 <?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/controllers/ErrorController.php
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
 
+/**
+ * Error Controller
+ *
+ * The same as it was created by Zend Tool
+ *
+ * @uses Zend_Controller_Action
+ */
 class ErrorController extends Zend_Controller_Action
 {
 

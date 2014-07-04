@@ -1,0 +1,92 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/cart/show.phtml
+ *
+ * View file used to show cart information.
+ *
+ * The structure was simply copied and simplyfied
+ * from the actual home24 website.
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><?php echo $this->placeholder('header'); ?>
+<div id="main-content" style="text-align:center;width:960px;">
+    <div id="cart-wrapper">
+        <div id="cart-main">
+            <div class="cart-row is-empty">
+                <div class="ie-before"></div>
+                <br><br><br><br>
+                <?php if(!$this->cart['products']): ?>
+                    <section id="cart-content" class="cart-content">
+                        <h1 class="cart-title">Ihr Warenkorb</h1>
+                        <br><br>
+                        <a href="<?php echo $this->url(array()); ?>" class="button orange pull-right buy-more">Weiter einkaufen</a>
+                        <div class="cart-empty-label" style="text-align:center">Der Warenkorb ist leer</div>
+                        <div class="clear-both"></div>
+                    </section>
+                <?php else: ?>
+                    <style>
+                        section table {
+                            padding: 10px;
+                            border: solid;
+                            text-align:center;
+                        }
+                        section table tr > td, section table tr > th {
+                            padding:10px;
+                            text-align:center;
+                        }
+                    </style>
+                    <section id="cart-content" class="cart-content" style="display:inline-block">
+                        <h1 class="cart-title">Ihr Warenkorb</h1>
+                        <br><br>
+                        <form method="POST" action="<?php
+                            echo $pEdit = $this->url(array(
+                                'controller' => 'cart',
+                                'action'     => 'set'), 'default'); ?>">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Remove</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <?php foreach ($this->cart['products'] as $product):
+                            $pUrl = $this->url(array('productId' => $product['id']), 'product');
+                            $pRemove = $this->url(array('controller' => 'cart',
+                                                        'action'     => 'remove',
+                                                            'id'     => $product['id']), 'default'); ?>
+                            <tr>
+                                <td><a href="<?php echo $pUrl; ?>"><?php echo $product['name']; ?></a></td>
+                                <td><?php echo $product['price']; ?></td>
+                                <td><input type="text" name="qty[<?php echo $product['id']; ?>]" value="<?php echo $product['quantity']; ?>" size="4"></td>
+                                <td><a href="<?php echo $pRemove; ?>">Remove</a></td>
+                                <td><?php echo $product['subtotal']; ?></a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td><input type="submit" value="Edit"></td>
+                                <?php $pEmpty = $this->url(array('controller' => 'cart',
+                                                                 'action'     => 'empty'), 'default'); ?>
+                                <td><a href="<?php echo $pEmpty; ?>">Remove All</a></td>
+                                <td><?php echo $this->cart['total']; ?></td>
+                            </tbody>
+                        </table>
+                        </form>
+                        <a href="<?php echo $this->url(array()); ?>" class="button orange pull-right buy-more">Weiter einkaufen</a>
+                    </section>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

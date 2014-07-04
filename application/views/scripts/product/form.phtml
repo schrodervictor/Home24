@@ -1,0 +1,23 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/product/form.phtml
+ *
+ * View file used to render product form.
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><br><br>
+<div id="view-content">
+    <?php if($this->success): ?>
+    <?php     echo '<h3>Product ' . $this->productName . ' ' . $this->actionPerformed . '!</h3>'; ?>
+    <?php endif; ?>
+    <p>Add/edit Product:</p>
+<?php $this->form->setAction($this->url());
+      echo $this->form; ?>
+</div>

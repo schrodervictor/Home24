@@ -1,0 +1,40 @@
+<?php
+/**
+ * Victor Schröder's test task for Home24
+ *
+ * File: application/views/scripts/product/index.phtml
+ *
+ * View file used to render product info page.
+ *
+ * NO DESIGN work done here
+ *
+ * @category   Home24
+ * @package    application
+ * @author     Victor Schröder <schrodervictor@gmail.com>
+ */
+?><?php
+    $add = $this->url(array(
+        'controller' => 'cart',
+        'action' => 'add',
+        'id' => $this->product['id'],
+        ), 'default'
+    );
+    $edit = $this->url(array(
+        'controller' => 'product',
+        'action' => 'edit',
+        'id' => $this->product['id'],
+        ), 'default'
+    );
+    echo $this->placeholder('header'); ?>
+<div id="main-content" style="text-align:center;width:960px;">
+    <br><br>
+    <div id="view-content" style="text-align:center;width:475px;display:inline-block ">
+        <h1 class="block-text">Welcome to product: <strong><?php echo $this->product['name']; ?></strong></h1>
+        <p><a href="<?php echo $edit; ?>">Edit this product</a></p>
+        <br><br>
+        <p>Price: <?php echo $this->product['price']; ?></p>
+        <p><a href="<?php echo $add; ?>">Add to cart</a></p>
+        <br><br>
+        <?php echo $this->product['description']; ?>
+    </div>
+</div>
